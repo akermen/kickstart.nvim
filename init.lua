@@ -197,6 +197,18 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 
+  -- plugins
+  require 'custom.plugins.undotree',
+  require 'custom.plugins.filetree',
+  require 'custom.plugins.autopairs',
+  require 'custom.plugins.vim-fubitive',
+  require 'custom.plugins.vim-easy-align',
+  require 'custom.plugins.markdown-preview',
+  require 'custom.plugins.vim-zoom',
+  require 'custom.plugins.cellular-automaton',
+  require 'custom.plugins.git-blame',
+  require 'custom.plugins.nvim-surround',
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
@@ -510,6 +522,9 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require('custom.remap')
+require('custom.settings')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
