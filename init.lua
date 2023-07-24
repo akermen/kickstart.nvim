@@ -208,6 +208,7 @@ require('lazy').setup({
   require 'custom.plugins.cellular-automaton',
   require 'custom.plugins.git-blame',
   require 'custom.plugins.nvim-surround',
+  require 'custom.plugins.solarized8',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
