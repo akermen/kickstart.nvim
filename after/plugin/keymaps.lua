@@ -145,8 +145,8 @@ vim.keymap.set("v", "J",             ":m '>+1<CR>gv=gv",                        
 vim.keymap.set("v", "K",             ":m '<-2<CR>gv=gv",                          { desc = 'Move block of lines', noremap = true })
 vim.keymap.set("n", "<C-d>",         "<C-d>zz",                                   { desc = 'Page down centered',  noremap = true })
 vim.keymap.set("n", "<C-u>",         "<C-u>zz",                                   { desc = 'Page up centered',    noremap = true })
-vim.keymap.set("n", "n",             "nzzzv",                                     { desc = 'Next hit centered',   noremap = true })
-vim.keymap.set("n", "N",             "Nzzzv",                                     { desc = 'Prev hit centered',   noremap = true })
+-- vim.keymap.set("n", "n",             "nzzzv",                                     { desc = 'Next hit centered',   noremap = true })
+-- vim.keymap.set("n", "N",             "Nzzzv",                                     { desc = 'Prev hit centered',   noremap = true })
 vim.keymap.set("v", "y",             "myy`y",                                     { desc = "[Y]ank from cursor",  noremap = true })
 vim.keymap.set("v", "Y",             "myY`y",                                     { desc = "[Y]ank from cursor",  noremap = true })
 
