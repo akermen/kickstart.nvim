@@ -83,11 +83,12 @@ vim.keymap.set("n", "<leader>dp",    "[c",                                      
 -- search
 vim.keymap.set('n', '<leader>sC',    require('telescope.builtin').commands,       { desc = '[S]earch [C]ommand',  noremap = true })
 vim.keymap.set('n', '<leader>sH',    require('telescope.builtin').search_history, { desc = '[S]earch [H]istory',  noremap = true })
-vim.keymap.set('n', '<leader>sr',    require('telescope.builtin').registers,      { desc = '[S]earch [R]egister', noremap = true })
+vim.keymap.set('n', '<leader>sR',    require('telescope.builtin').registers,      { desc = '[S]earch [R]egister', noremap = true })
 vim.keymap.set('n', '<leader>sm',    require('telescope.builtin').marks,          { desc = '[S]earch [M]ark',     noremap = true })
 vim.keymap.set('n', '<leader>sk',    require('telescope.builtin').keymaps,        { desc = '[S]earch [K]eymap',   noremap = true })
 vim.keymap.set('n', '<leader>so',    require('telescope.builtin').vim_options,    { desc = '[S]earch [O]ption',   noremap = true })
 vim.keymap.set('n', '<leader>sj',    require('telescope.builtin').jumplist   ,    { desc = '[S]earch [J]ump',     noremap = true })
+vim.keymap.set('n', '<leader>sr',    require('telescope.builtin').resume     ,    { desc = '[S]earch [R]esume',   noremap = true })
 vim.keymap.set('n', '<leader>hh',    ":set hlsearch!<CR>",                        { desc = '[H]ighlight [H]it',   noremap = true })
 
 -- Git
@@ -137,6 +138,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>me",    "<cmd>!chmod +x %<CR>",                      { desc = '[M]ake [E]xecutable', silent = true  })
 vim.keymap.set("n", "<leader>mR",    "<cmd>CellularAutomaton make_it_rain<CR>",   { desc = '[M]ake it [R]ain',    noremap = true })
 vim.keymap.set("n", "<leader>mG",    "<cmd>CellularAutomaton game_of_life<CR>",   { desc = '[M]ake it [G]ame',    noremap = true })
+vim.keymap.set('n', '<leader>mP',    require('telescope.builtin').planets     ,   { desc = '[M]ake [P]lanets',    noremap = true })
 vim.keymap.set("n", "<leader>db",    [["_d]],                                     { desc = '[D]elete to [B]lack', noremap = true })
 vim.keymap.set("v", "<leader>db",    [["_d]],                                     { desc = '[D]elete to [B]lack', noremap = true })
 vim.keymap.set("x", "<leader>pk",    [["_dP]],                                    { desc = '[P]aste but [K]eep',  noremap = true })
