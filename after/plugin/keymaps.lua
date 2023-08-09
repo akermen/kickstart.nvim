@@ -147,10 +147,35 @@ vim.keymap.set("v", "J",             ":m '>+1<CR>gv=gv",                        
 vim.keymap.set("v", "K",             ":m '<-2<CR>gv=gv",                          { desc = 'Move block of lines', noremap = true })
 vim.keymap.set("n", "<C-d>",         "<C-d>zz",                                   { desc = 'Page down centered',  noremap = true })
 vim.keymap.set("n", "<C-u>",         "<C-u>zz",                                   { desc = 'Page up centered',    noremap = true })
--- vim.keymap.set("n", "n",             "nzzzv",                                     { desc = 'Next hit centered',   noremap = true })
--- vim.keymap.set("n", "N",             "Nzzzv",                                     { desc = 'Prev hit centered',   noremap = true })
+-- vim.keymap.set("n", "n",          "nzzzv",                                     { desc = 'Next hit centered',   noremap = true })
+-- vim.keymap.set("n", "N",          "Nzzzv",                                     { desc = 'Prev hit centered',   noremap = true })
 vim.keymap.set("v", "y",             "myy`y",                                     { desc = "[Y]ank from cursor",  noremap = true })
 vim.keymap.set("v", "Y",             "myY`y",                                     { desc = "[Y]ank from cursor",  noremap = true })
+vim.keymap.set('n', 'x',             '"_x',                                       { desc = "Delete",              noremap = true })
+vim.keymap.set('n', '+',             '<C-a>',                                     { desc = "Increment",           noremap = true })
+vim.keymap.set('n', '-',             '<C-x>',                                     { desc = "Decrement",           noremap = true })
+vim.keymap.set('v', '+',             '<C-a>',                                     { desc = "Increment",           noremap = true })
+vim.keymap.set('v', '-',             '<C-x>',                                     { desc = "Decrement",           noremap = true })
+vim.keymap.set('n', '<leader>fn',    ":echo expand('%:t')<CR>",                   { desc = "[F]ile [N]ame",       noremap = true })
+-- vim.keymap.set('n', '<leader>fp', ':file<CR>',                                 { desc = "[F]ile [P]ath",       noremap = true })
+vim.keymap.set('n', '<leader>fp',    ':echo @%<CR>',                              { desc = "[F]ile [P]ath",       noremap = true })
+vim.keymap.set('n', '<leader>fr',    ":echo expand('%:p')<CR>",                   { desc = "[F]ile [R]oot",       noremap = true })
+
+-- undo
+vim.keymap.set("n", "<leader>ut",    ":UndotreeToggle<CR>",                       { desc = '[U]ndotree [T]oggle', noremap = true })
+vim.keymap.set("n", "<leader>us",    ":UndotreeShow<CR>",                         { desc = '[U]ndotree [S]how',   noremap = true })
+vim.keymap.set("n", "<leader>uh",    ":UndotreeHide<CR>",                         { desc = '[U]ndotree [H]ide',   noremap = true })
+vim.keymap.set("n", "<leader>uf",    ":UndotreeFocus<CR>",                        { desc = '[U]ndotree [F]ocus',  noremap = true })
+
+-- gui app specific maps
+if vim.g.neovide then
+vim.keymap.set('n', '<D-v>',         '"+p',                                       { desc = "Paste",               noremap = true })
+vim.keymap.set('i', '<D-v>',         '<c-r>+',                                    { desc = "Paste",               noremap = true })
+vim.keymap.set('c', '<D-v>',         '<c-r>+',                                    { desc = "Paste",               noremap = true })
+vim.keymap.set('v', '<D-c>',         '"+y',                                       { desc = "Yank",                noremap = true })
+vim.keymap.set('n', '<D-s>',         ':w<CR>',                                    { desc = "Save",                noremap = true })
+vim.keymap.set('i', '<D-s>',         '<ESC>:w<CR>',                               { desc = "Save",                noremap = true })
+end
 
 -- open url
 if vim.fn.has("mac") == 1 then
