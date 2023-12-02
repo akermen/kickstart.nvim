@@ -32,14 +32,14 @@ vim.keymap.set("n", "<leader>tL",    ":tabm<CR>",                               
 vim.keymap.set("n", "<leader>to",    ":tabonly<CR>",                              { desc = "[T]ab [O]nly",        noremap = true })
 vim.keymap.set("n", "<leader>ts",    ":tab split<CR>",                            { desc = "[T]ab [S]plit",       noremap = true })
 vim.keymap.set("n", "<leader>tb",    ":tab ball<CR>",                             { desc = "[T]ab [B]uffers",     noremap = true })
-vim.keymap.set("n", "<leader>t1",    "1gt",                                       { desc = "[T]ab [1]",           noremap = true })
-vim.keymap.set("n", "<leader>t2",    "2gt",                                       { desc = "[T]ab [2]",           noremap = true })
-vim.keymap.set("n", "<leader>t3",    "3gt",                                       { desc = "[T]ab [3]",           noremap = true })
-vim.keymap.set("n", "<leader>t4",    "4gt",                                       { desc = "[T]ab [4]",           noremap = true })
-vim.keymap.set("n", "<leader>t5",    "5gt",                                       { desc = "[T]ab [5]",           noremap = true })
-vim.keymap.set("n", "<leader>t6",    "6gt",                                       { desc = "[T]ab [6]",           noremap = true })
-vim.keymap.set("n", "<leader>t7",    "7gt",                                       { desc = "[T]ab [7]",           noremap = true })
-vim.keymap.set("n", "<leader>t8",    "8gt",                                       { desc = "[T]ab [8]",           noremap = true })
+vim.keymap.set("n", "<leader>1",     "1gt",                                       { desc = "[T]ab [1]",           noremap = true })
+vim.keymap.set("n", "<leader>2",     "2gt",                                       { desc = "[T]ab [2]",           noremap = true })
+vim.keymap.set("n", "<leader>3",     "3gt",                                       { desc = "[T]ab [3]",           noremap = true })
+vim.keymap.set("n", "<leader>4",     "4gt",                                       { desc = "[T]ab [4]",           noremap = true })
+vim.keymap.set("n", "<leader>5",     "5gt",                                       { desc = "[T]ab [5]",           noremap = true })
+vim.keymap.set("n", "<leader>6",     "6gt",                                       { desc = "[T]ab [6]",           noremap = true })
+vim.keymap.set("n", "<leader>7",     "7gt",                                       { desc = "[T]ab [7]",           noremap = true })
+vim.keymap.set("n", "<leader>8",     "8gt",                                       { desc = "[T]ab [8]",           noremap = true })
 
 -- NeoTree
 vim.keymap.set("n", "<leader>nt",    ":Neotree reveal_force_cwd toggle<CR>",      { desc = "[N]eotree [T]oggle",  noremap = true })
@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>ng",    ":Neotree float git_status<CR>",           
 -- windows
 vim.keymap.set("n", "<leader>wv",    "<C-W>v",                                    { desc = "[W]indow [V]ertical", noremap = true })
 vim.keymap.set("n", "<leader>wp",    "<C-W>s",                                    { desc = "[W]indow [P]arallel", noremap = true })
-vim.keymap.set("n", "<leader>wc",    "<C-W>c",                                    { desc = "[W]indow [C]lose",    noremap = true })
+vim.keymap.set("n", "<leader>wq",    "<C-W>c",                                    { desc = "[W]indow [Q]uit",     noremap = true })
 vim.keymap.set("n", "<leader>we",    "<C-W>=",                                    { desc = "[W]indow [E]qual",    noremap = true })
 vim.keymap.set("n", "<leader>wx",    "<C-W>x",                                    { desc = "[W]indow [X]change",  noremap = true })
 vim.keymap.set("n", "<leader>wo",    "<C-W>r",                                    { desc = "[W]indow [O]rder",    noremap = true })
@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>si",    "zw",                                      
 
 -- diff
 vim.keymap.set("n", "<leader>dw",    ":windo diffthis<CR>",                       { desc = "[D]iff [W]indow",     noremap = true })
-vim.keymap.set("n", "<leader>dc",    ":diffoff!<CR>",                             { desc = "[D]iff [C]lose",      noremap = true })
+vim.keymap.set("n", "<leader>dq",    ":diffoff!<CR>",                             { desc = "[D]iff [Q]uit",       noremap = true })
 vim.keymap.set("n", "<leader>dn",    "]c",                                        { desc = "[D]iff [N]ext",       noremap = true })
 vim.keymap.set("n", "<leader>dp",    "[c",                                        { desc = "[D]iff [P]revious",   noremap = true })
 
@@ -117,7 +117,7 @@ vim.keymap.set("n", "<leader>tw",    ":set wrap!<cr>",                          
 -- quickfix
 vim.keymap.set("n", "<Space>qo",     require('telescope.builtin').quickfix,       { desc = '[Q]uickfix [O]pen',   noremap = true })
 vim.keymap.set("n", "<Space>qO",     ":copen<CR>",                                { desc = '[Q]uickfix [O]pen',   noremap = true })
-vim.keymap.set("n", "<Space>qc",     ":cclose<CR>",                               { desc = '[Q]uickfix [C]close', noremap = true })
+vim.keymap.set("n", "<Space>qq",     ":cclose<CR>",                               { desc = '[Q]uickfix [Q]uit',   noremap = true })
 vim.keymap.set("n", "<Space>qn",     ":cnext<CR>",                                { desc = '[Q]uickfix [N]ext',   noremap = true })
 vim.keymap.set("n", "<Space>qp",     ":cprev<CR>",                                { desc = '[Q]uickfix [P]rev',   noremap = true })
 vim.keymap.set("n", "<Space>qf",     ":cfirst<CR>",                               { desc = '[Q]uickfix [F]irst',  noremap = true })
@@ -126,7 +126,7 @@ vim.keymap.set("n", "<Space>qg",     ":cc<CR>",                                 
 
 -- location-list
 vim.keymap.set("n", "<Space>lo",     ":lopen<CR>",                                { desc = '[L]ocation [O]pen',   noremap = true })
-vim.keymap.set("n", "<Space>lc",     ":lclose<CR>",                               { desc = '[L]ocation [C]close', noremap = true })
+vim.keymap.set("n", "<Space>lq",     ":lclose<CR>",                               { desc = '[L]ocation [Q]uit',   noremap = true })
 vim.keymap.set("n", "<Space>ln",     ":lnext<CR>",                                { desc = '[L]ocation [N]ext',   noremap = true })
 vim.keymap.set("n", "<Space>lp",     ":lprev<CR>",                                { desc = '[L]ocation [P]rev',   noremap = true })
 vim.keymap.set("n", "<Space>lf",     ":lfirst<CR>",                               { desc = '[L]ocation [F]irst',  noremap = true })
