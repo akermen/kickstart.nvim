@@ -112,7 +112,6 @@ vim.keymap.set('n', '<leader>ea',    ':EasyAlign',                              
 vim.keymap.set('n', '<leader>mp',    ':MarkdownPreview<CR>',                      { desc = '[M]arkdown [P]play',  noremap = true })
 vim.keymap.set('n', '<leader>ms',    ':MarkdownPreviewStop<CR>',                  { desc = '[M]arkdown [S]top',   noremap = true })
 vim.keymap.set('n', '<leader>mt',    ':MarkdownPreviewToggle<CR>',                { desc = '[M]arkdown [T]oggle', noremap = true })
-vim.keymap.set("n", "<leader>tw",    ":set wrap!<cr>",                            { desc = '[T]ext [W]rap',       noremap = true })
 
 -- quickfix
 vim.keymap.set("n", "<Space>qo",     require('telescope.builtin').quickfix,       { desc = '[Q]uickfix [O]pen',   noremap = true })
@@ -140,7 +139,6 @@ vim.keymap.set("n", "<leader>mR",    "<cmd>CellularAutomaton make_it_rain<CR>", 
 vim.keymap.set("n", "<leader>mG",    "<cmd>CellularAutomaton game_of_life<CR>",   { desc = '[M]ake it [G]ame',    noremap = true })
 vim.keymap.set('n', '<leader>mP',    require('telescope.builtin').planets     ,   { desc = '[M]ake [P]lanets',    noremap = true })
 vim.keymap.set("n", "<leader>db",    [["_d]],                                     { desc = '[D]elete to [B]lack', noremap = true })
-vim.keymap.set("v", "<leader>db",    [["_d]],                                     { desc = '[D]elete to [B]lack', noremap = true })
 vim.keymap.set("x", "<leader>pk",    [["_dP]],                                    { desc = '[P]aste but [K]eep',  noremap = true })
 vim.keymap.set("n", "J",             "mzJ`z",                                     { desc = '[J]oin from Cursor',  noremap = true })
 vim.keymap.set("v", "J",             ":m '>+1<CR>gv=gv",                          { desc = 'Move block of lines', noremap = true })
@@ -160,6 +158,7 @@ vim.keymap.set('n', '<leader>fn',    ":echo expand('%:t')<CR>",                 
 -- vim.keymap.set('n', '<leader>fp', ':file<CR>',                                 { desc = "[F]ile [P]ath",       noremap = true })
 vim.keymap.set('n', '<leader>fp',    ':echo @%<CR>',                              { desc = "[F]ile [P]ath",       noremap = true })
 vim.keymap.set('n', '<leader>fr',    ":echo expand('%:p')<CR>",                   { desc = "[F]ile [R]oot",       noremap = true })
+vim.keymap.set("n", "<leader>tw",    ":set wrap!<cr>",                            { desc = '[T]ext [W]rap',       noremap = true })
 
 -- undo
 vim.keymap.set("n", "<leader>ut",    ":UndotreeToggle<CR>",                       { desc = '[U]ndotree [T]oggle', noremap = true })
@@ -185,4 +184,7 @@ elseif vim.fn.has("unix") == 1 then
 else
     vim.keymap.set('n', '<leader>gx', '<Cmd>lua print("Error: gx is not supported on this OS!")<CR>')
 end
+
+vim.keymap.set("n", "<leader>uf",    ":UndotreeFocus<CR>",                        { desc = '[U]ndotree [F]ocus',  noremap = true })
+vim.keymap.set("n", "<leader>do",    "<CMD>Oil<CR>",                              { desc = "[D]irectory [O]pen",  noremap = true })
 
