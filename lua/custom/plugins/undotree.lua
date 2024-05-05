@@ -1,15 +1,15 @@
 -- https://github.com/mbbill/undotree
 return {
-  "mbbill/undotree",
-    init = function()
-      vim.g.undotree_WindowLayout = 2
-      vim.g.undotree_SetFocusWhenToggle = 1
-      -- vim.g.undotree_SplitWidth = 60
-    end,
+  'mbbill/undotree',
+  init = function()
+    vim.g.undotree_WindowLayout = 2
+    vim.g.undotree_SetFocusWhenToggle = 1
+    -- vim.g.undotree_SplitWidth = 60
+  end,
 }
 
 --  Window layouts
---  
+--
 --  style 1
 --  +----------+------------------------+
 --  |          |                        |
@@ -58,4 +58,3 @@ return {
 --  |                            diff   |
 --  |                                   |
 --  +-----------------------------------+
-
