@@ -194,6 +194,25 @@ vim.keymap.set('n', '<D-s>',         ':w<CR>',                                  
 vim.keymap.set('i', '<D-s>',         '<ESC>:w<CR>',                               { desc = "Save",                noremap = true })
 end
 
+-- ollama
+vim.keymap.set('n', '<leader>ai',    ':Gen<CR>',                                  { desc = '[A][I]',              noremap = true })
+vim.keymap.set('v', '<leader>ai',    ':Gen<CR>',                                  { desc = '[A][I]',              noremap = true })
+vim.keymap.set('n', '<leader>ag',    ':Gen Generate<CR>',                         { desc = '[A]I [G]enerate',     noremap = true })
+vim.keymap.set('n', '<leader>ac',    ':Gen Chat<CR>',                             { desc = '[A]I [C]hat',         noremap = true })
+vim.keymap.set('v', '<leader>ao',    ':Gen Summarize<CR>',                        { desc = '[A]I [O]utline',      noremap = true })
+vim.keymap.set('v', '<leader>aa',    ':Gen Ask<CR>',                              { desc = '[A]I [A]ask',         noremap = true })
+vim.keymap.set('v', '<leader>as',    ':Gen Enhance_Grammar_Spelling<CR>',         { desc = '[A]I [S]spelling',    noremap = true })
+vim.keymap.set('v', '<leader>aw',    ':Gen Enhance_Wording<CR>',                  { desc = '[A]I [W]ording',      noremap = true })
+vim.keymap.set('v', '<leader>ar',    ':Gen Review_Code<CR>',                      { desc = '[A]I [R]eview Code',  noremap = true })
+vim.keymap.set('v', '<leader>ae',    ':Gen Enhance_Code<CR>',                     { desc = '[A]I [E]nhance Code', noremap = true })
+vim.keymap.set('v', '<leader>ab',    ':Gen Make_Concise<CR>',                     { desc = '[A]I [B]rief',        noremap = true })
+vim.keymap.set('v', '<leader>al',    ':Gen Make_List<CR>',                        { desc = '[A]I [L]ist',         noremap = true })
+vim.keymap.set('v', '<leader>at',    ':Gen Make_Table<CR>',                       { desc = '[A]I [T]able',        noremap = true })
+vim.keymap.set('v', '<leader>at',    ':Gen Make_Table<CR>',                       { desc = '[A]I [T]able',        noremap = true })
+vim.keymap.set('v', '<leader>am',    ':Gen Change<CR>',                           { desc = '[A]I [M]odify',       noremap = true })
+vim.keymap.set('v', '<leader>av',    ':Gen Change_Code<CR>',                      { desc = '[A]I [V]ariety Code', noremap = true })
+vim.keymap.set('v', '<leader>af',    ':Gen Fix_Code<CR>',                         { desc = '[A]I [F]ix Code',     noremap = true })
+
 -- open url
 if vim.fn.has("mac") == 1 then
     vim.keymap.set('n', '<leader>gx', '<Cmd>call jobstart(["open", expand("<cfile>")], {"detach": v:true})<CR>')
@@ -206,3 +225,27 @@ end
 vim.keymap.set("n", "<leader>uf",    ":UndotreeFocus<CR>",                        { desc = '[U]ndotree [F]ocus',  noremap = true })
 vim.keymap.set("n", "<leader>do",    "<CMD>Oil<CR>",                              { desc = "[D]irectory [O]pen",  noremap = true })
 
+-- cmp: fix for <CR> to confirm instead of <C-y> and <TAB> to next item
+local cmp = require("cmp")
+cmp.setup({
+  mapping = {
+    ["<CR>"] = cmp.mapping(
+      function(fallback)
+        if cmp.visible() then
+          cmp.confirm({ select = true })
+        else
+          fallback()
+        end
+      end, { "i" }),
+    ["<TAB>"] = cmp.mapping(
+      function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end, { "i" })
+  }
+})
+
+-- ---------------------------------------------------------------------------

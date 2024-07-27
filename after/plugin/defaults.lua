@@ -44,3 +44,14 @@ if vim.g.neovide then
   vim.g.neovide_cursor_trail_size = 0
   vim.o.guifont = 'DejaVuSansMono Nerd Font Mono:h15'
 end
+
+-- https://github.com/David-Kunz/gen.nvim
+require('gen').prompts['Elaborate_Text'] = {
+  prompt = 'Elaborate the following text:\n$text',
+  replace = true,
+}
+require('gen').prompts['Fix_Code'] = {
+  prompt = 'Fix the following code. Only ouput the result in format ```$filetype\n...\n```:\n```$filetype\n$text\n```',
+  replace = true,
+  extract = '```$filetype\n(.-)```',
+}
