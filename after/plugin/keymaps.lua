@@ -42,10 +42,10 @@ vim.keymap.set("n", "<leader>7",     "7gt",                                     
 vim.keymap.set("n", "<leader>8",     "8gt",                                       { desc = "[T]ab [8]",           noremap = true })
 
 -- NeoTree
-vim.keymap.set("n", "<leader>nt",    ":Neotree reveal_force_cwd toggle<CR>",      { desc = "[N]eotree [T]oggle",  noremap = true })
-vim.keymap.set("n", "<leader>nf",    ":Neotree reveal_force_cwd float<CR>",       { desc = "[N]eotree [F]loat",   noremap = true })
-vim.keymap.set("n", "<leader>nb",    ":Neotree toggle show buffers right<CR>",    { desc = "[N]eotree [B]uffers", noremap = true })
-vim.keymap.set("n", "<leader>ng",    ":Neotree float git_status<CR>",             { desc = "[N]eotree [G]it",     noremap = true })
+vim.keymap.set("n", "<leader>n",     ":Neotree reveal_force_cwd toggle<CR>",      { desc = "[N]eotree [T]oggle",  noremap = true })
+-- vim.keymap.set("n", "<leader>nf", ":Neotree reveal_force_cwd float<CR>",       { desc = "[N]eotree [F]loat",   noremap = true })
+-- vim.keymap.set("n", "<leader>nb", ":Neotree toggle show buffers right<CR>",    { desc = "[N]eotree [B]uffers", noremap = true })
+-- vim.keymap.set("n", "<leader>ng", ":Neotree float git_status<CR>",             { desc = "[N]eotree [G]it",     noremap = true })
 
 -- windows
 vim.keymap.set("n", "<leader>wv",    "<C-W>v",                                    { desc = "[W]indow [V]ertical", noremap = true })
@@ -63,6 +63,7 @@ vim.keymap.set("n", "<leader>wn",    ":vertical resize -5<CR>",                 
 vim.keymap.set("n", "<leader>wu",    ":resize +5<CR>",                            { desc = "[W]indow [U]p",       noremap = true })
 vim.keymap.set("n", "<leader>wd",    ":resize -5<CR>",                            { desc = "[W]indow [D]own",     noremap = true })
 vim.keymap.set("n", "<leader>wz",    vim.fn['zoom#toggle'],                       { desc = "[W]indow [Z]oom",     noremap = true })
+vim.keymap.set("n", "<leader>z",     vim.fn['zoom#toggle'],                       { desc = "[Z]oom Window",       noremap = true })
 
 -- spell checking
 vim.keymap.set("n", "<leader>st",    ":setlocal spell!<CR>",                      { desc = "[S]pell [T]oggle",    noremap = true })
@@ -87,9 +88,11 @@ vim.keymap.set('n', '<leader>sR',    require('telescope.builtin').registers,    
 vim.keymap.set('n', '<leader>sm',    require('telescope.builtin').marks,          { desc = '[S]earch [M]ark',     noremap = true })
 vim.keymap.set('n', '<leader>sk',    require('telescope.builtin').keymaps,        { desc = '[S]earch [K]eymap',   noremap = true })
 vim.keymap.set('n', '<leader>so',    require('telescope.builtin').vim_options,    { desc = '[S]earch [O]ption',   noremap = true })
-vim.keymap.set('n', '<leader>sj',    require('telescope.builtin').jumplist   ,    { desc = '[S]earch [J]ump',     noremap = true })
-vim.keymap.set('n', '<leader>sr',    require('telescope.builtin').resume     ,    { desc = '[S]earch [R]esume',   noremap = true })
+vim.keymap.set('n', '<leader>sj',    require('telescope.builtin').jumplist,       { desc = '[S]earch [J]ump',     noremap = true })
+vim.keymap.set('n', '<leader>sr',    require('telescope.builtin').resume,         { desc = '[S]earch [R]esume',   noremap = true })
 vim.keymap.set('n', '<leader>hh',    ":set hlsearch!<CR>",                        { desc = '[H]ighlight [H]it',   noremap = true })
+vim.keymap.set('n', '<leader>o',     require('telescope.builtin').find_files,     { desc = '[O]pen Files',        noremap = true })
+vim.keymap.set('n', '<leader>f',     require('telescope.builtin').live_grep,      { desc = '[F]ind in files',     noremap = true })
 
 -- Git
 vim.keymap.set('n', '<leader>gg',    ":G<CR>",                                    { desc = '[G]it',               noremap = true })
@@ -127,7 +130,7 @@ vim.keymap.set('x', '<leader>ea',    ':EasyAlign',                              
 vim.keymap.set('n', '<leader>ea',    ':EasyAlign',                                { desc = '[E]asy [A]lign',      noremap = true })
 
 -- markdown preview
-vim.keymap.set('n', '<leader>mp',    ':MarkdownPreview<CR>',                      { desc = '[M]arkdown [P]play',  noremap = true })
+vim.keymap.set('n', '<leader>mp',    ':MarkdownPreview<CR>',                      { desc = '[M]arkdown [P]lay',   noremap = true })
 vim.keymap.set('n', '<leader>ms',    ':MarkdownPreviewStop<CR>',                  { desc = '[M]arkdown [S]top',   noremap = true })
 vim.keymap.set('n', '<leader>mt',    ':MarkdownPreviewToggle<CR>',                { desc = '[M]arkdown [T]oggle', noremap = true })
 
@@ -155,7 +158,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>me",    "<cmd>!chmod +x %<CR>",                      { desc = '[M]ake [E]xecutable', silent = true  })
 vim.keymap.set("n", "<leader>mR",    "<cmd>CellularAutomaton make_it_rain<CR>",   { desc = '[M]ake it [R]ain',    noremap = true })
 vim.keymap.set("n", "<leader>mG",    "<cmd>CellularAutomaton game_of_life<CR>",   { desc = '[M]ake it [G]ame',    noremap = true })
-vim.keymap.set('n', '<leader>mP',    require('telescope.builtin').planets     ,   { desc = '[M]ake [P]lanets',    noremap = true })
+vim.keymap.set('n', '<leader>mP',    require('telescope.builtin').planets,        { desc = '[M]ake [P]lanets',    noremap = true })
 vim.keymap.set("n", "<leader>db",    [["_d]],                                     { desc = '[D]elete to [B]lack', noremap = true })
 vim.keymap.set("x", "<leader>pk",    [["_dP]],                                    { desc = '[P]aste but [K]eep',  noremap = true })
 vim.keymap.set("n", "J",             "mzJ`z",                                     { desc = '[J]oin from Cursor',  noremap = true })
@@ -172,10 +175,10 @@ vim.keymap.set('n', '+',             '<C-a>',                                   
 vim.keymap.set('n', '-',             '<C-x>',                                     { desc = "Decrement",           noremap = true })
 vim.keymap.set('v', '+',             '<C-a>',                                     { desc = "Increment",           noremap = true })
 vim.keymap.set('v', '-',             '<C-x>',                                     { desc = "Decrement",           noremap = true })
-vim.keymap.set('n', '<leader>fn',    ":echo expand('%:t')<CR>",                   { desc = "[F]ile [N]ame",       noremap = true })
--- vim.keymap.set('n', '<leader>fp', ':file<CR>',                                 { desc = "[F]ile [P]ath",       noremap = true })
-vim.keymap.set('n', '<leader>fp',    ':echo @%<CR>',                              { desc = "[F]ile [P]ath",       noremap = true })
-vim.keymap.set('n', '<leader>fr',    ":echo expand('%:p')<CR>",                   { desc = "[F]ile [R]oot",       noremap = true })
+-- vim.keymap.set('n', '<leader>fn',    ":echo expand('%:t')<CR>",                { desc = "[F]ile [N]ame",       noremap = true })
+-- -- vim.keymap.set('n', '<leader>fp', ':file<CR>',                              { desc = "[F]ile [P]ath",       noremap = true })
+-- vim.keymap.set('n', '<leader>fp',    ':echo @%<CR>',                           { desc = "[F]ile [P]ath",       noremap = true })
+-- vim.keymap.set('n', '<leader>fr',    ":echo expand('%:p')<CR>",                { desc = "[F]ile [R]oot",       noremap = true })
 vim.keymap.set("n", "<leader>tw",    ":set wrap!<cr>",                            { desc = '[T]ext [W]rap',       noremap = true })
 
 -- undo
@@ -248,4 +251,42 @@ cmp.setup({
   }
 })
 
+-- harpoon
+local harpoon = require("harpoon")
+harpoon:setup()
+
+-- to use Telesopce as UI (does not allow reordering the list)
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+local functionHarpoonToggle1 = function() harpoon.ui:toggle_quick_menu(harpoon:list()) end
+local functionHarpoonToggle2 = function() toggle_telescope(harpoon:list()) end
+vim.keymap.set("n", "<leader>ho",    functionHarpoonToggle1,                      { desc = '[H]arpoon [O]pen',    noremap = true })
+vim.keymap.set("n", "<leader>ht",    functionHarpoonToggle2,                      { desc = '[H]arpoon [T[oggle',  noremap = true })
+vim.keymap.set("n", "<leader>ha",    function() harpoon:list():add() end,         { desc = '[H]arpoon [A]dd',     noremap = true })
+vim.keymap.set("n", "<leader>h1",    function() harpoon:list():select(1) end,     { desc = '[H]arpoon [1]',       noremap = true })
+vim.keymap.set("n", "<leader>h2",    function() harpoon:list():select(2) end,     { desc = '[H]arpoon [2]',       noremap = true })
+vim.keymap.set("n", "<leader>h3",    function() harpoon:list():select(3) end,     { desc = '[H]arpoon [3]',       noremap = true })
+vim.keymap.set("n", "<leader>h4",    function() harpoon:list():select(4) end,     { desc = '[H]arpoon [4]',       noremap = true })
+vim.keymap.set("n", "<leader>h5",    function() harpoon:list():select(5) end,     { desc = '[H]arpoon [5]',       noremap = true })
+vim.keymap.set("n", "<leader>h6",    function() harpoon:list():select(6) end,     { desc = '[H]arpoon [6]',       noremap = true })
+vim.keymap.set("n", "<leader>h7",    function() harpoon:list():select(7) end,     { desc = '[H]arpoon [7]',       noremap = true })
+vim.keymap.set("n", "<leader>h8",    function() harpoon:list():select(8) end,     { desc = '[H]arpoon [8]',       noremap = true })
+vim.keymap.set("n", "<leader>h9",    function() harpoon:list():select(9) end,     { desc = '[H]arpoon [9]',       noremap = true })
+vim.keymap.set("n", "<leader>hp",    function() harpoon:list():prev() end,        { desc = '[H]arpoon [P]rev',    noremap = true })
+vim.keymap.set("n", "<leader>hn",    function() harpoon:list():next() end,        { desc = '[H]arpoon [N]ext',    noremap = true })
 -- ---------------------------------------------------------------------------
