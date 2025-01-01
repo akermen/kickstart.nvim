@@ -159,7 +159,7 @@ vim.keymap.set("n", "<leader>me",    "<cmd>!chmod +x %<CR>",                    
 vim.keymap.set("n", "<leader>mR",    "<cmd>CellularAutomaton make_it_rain<CR>",   { desc = '[M]ake it [R]ain',    noremap = true })
 vim.keymap.set("n", "<leader>mG",    "<cmd>CellularAutomaton game_of_life<CR>",   { desc = '[M]ake it [G]ame',    noremap = true })
 vim.keymap.set('n', '<leader>mP',    require('telescope.builtin').planets,        { desc = '[M]ake [P]lanets',    noremap = true })
-vim.keymap.set("n", "<leader>db",    [["_d]],                                     { desc = '[D]elete to [B]lack', noremap = true })
+vim.keymap.set("n", "<leader>mb",    [["_d]],                                     { desc = '[M]ove to [B]lack',   noremap = true })
 vim.keymap.set("x", "<leader>pk",    [["_dP]],                                    { desc = '[P]aste but [K]eep',  noremap = true })
 vim.keymap.set("n", "J",             "mzJ`z",                                     { desc = '[J]oin from Cursor',  noremap = true })
 vim.keymap.set("v", "J",             ":m '>+1<CR>gv=gv",                          { desc = 'Move block of lines', noremap = true })
@@ -226,7 +226,7 @@ else
 end
 
 vim.keymap.set("n", "<leader>uf",    ":UndotreeFocus<CR>",                        { desc = '[U]ndotree [F]ocus',  noremap = true })
-vim.keymap.set("n", "<leader>do",    "<CMD>Oil<CR>",                              { desc = "[D]irectory [O]pen",  noremap = true })
+-- vim.keymap.set("n", "<leader>do",    "<CMD>Oil<CR>",                           { desc = "[D]irectory [O]pen",  noremap = true })
 
 -- cmp: fix for <CR> to confirm instead of <C-y> and <TAB> to next item
 local cmp = require("cmp")
@@ -289,4 +289,57 @@ vim.keymap.set("n", "<leader>h8",    function() harpoon:list():select(8) end,   
 vim.keymap.set("n", "<leader>h9",    function() harpoon:list():select(9) end,     { desc = '[H]arpoon [9]',       noremap = true })
 vim.keymap.set("n", "<leader>hp",    function() harpoon:list():prev() end,        { desc = '[H]arpoon [P]rev',    noremap = true })
 vim.keymap.set("n", "<leader>hn",    function() harpoon:list():next() end,        { desc = '[H]arpoon [N]ext',    noremap = true })
+
+-- dap
+local dap = require("dap")
+local dapui = require("dapui")
+local widgets = require('dap.ui.widgets')
+
+local function debug_stop()
+    dap.clear_breakpoints()
+    dapui.close()
+    dap.terminate()
+    -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
+end
+
+local function set_breakpoint_log()
+    dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+end
+
+local function float_element(element)
+    dapui.float_element(element)
+end
+
+local function watch_add()
+   dapui.elements.watches.add(vim.fn.expand('<cword>'))
+end
+
+vim.keymap.set('n', '<F5>',          function() dap.continue() end,               { desc = 'Debug Continue',      noremap = true })
+vim.keymap.set('n', '<F6>',          function() debug_stop() end,                 { desc = 'Debug End',           noremap = true })
+vim.keymap.set('n', '<F10>',         function() dap.step_over() end,              { desc = 'Debug Step Over',     noremap = true })
+vim.keymap.set('n', '<F11>',         function() dap.step_into() end,              { desc = 'Debug Step Into',     noremap = true })
+vim.keymap.set('n', '<F12>',         function() dap.step_out() end,               { desc = 'Debug Step Up',       noremap = true })
+
+vim.keymap.set('n', '<leader>dc',    function() dap.continue() end,               { desc = '[D]ebug [C]ontinue',  noremap = true })
+vim.keymap.set('n', '<leader>dt',    function() debug_stop() end,                 { desc = '[D]ebug [T]erminate', noremap = true })
+vim.keymap.set('n', '<leader>do',    function() dap.step_over() end,              { desc = '[D]ebug Step [O]ver', noremap = true })
+vim.keymap.set('n', '<leader>di',    function() dap.step_into() end,              { desc = '[D]ebug Step [I]nto', noremap = true })
+vim.keymap.set('n', '<leader>du',    function() dap.step_out() end,               { desc = '[D]ebug Step [U]p',   noremap = true })
+
+vim.keymap.set('n', '<leader>de',    function() widgets.hover() end,              { desc = '[D]ebug [E]valuate',  noremap = true })
+vim.keymap.set('v', '<leader>de',    function() widgets.hover() end,              { desc = '[D]ebug [E]valuate',  noremap = true })
+vim.keymap.set('n', '<leader>dv',    function() widgets.preview() end,            { desc = '[D]ebug E[v]aluate', noremap = true })
+vim.keymap.set('v', '<leader>dv',    function() widgets.preview() end,            { desc = '[D]ebug E[v]aluate', noremap = true })
+
+vim.keymap.set('n', '<leader>lb',    function() float_element('breakpoints') end, { desc = '[L]ist [B]r.points',  noremap = true })
+vim.keymap.set('n', '<leader>ls',    function() float_element('scopes') end,      { desc = '[L]ist [S]copes',     noremap = true })
+vim.keymap.set('n', '<leader>lt',    function() float_element('stacks') end,      { desc = '[L]ist [T]hreads',    noremap = true })
+vim.keymap.set('n', '<leader>lw',    function() float_element('watches') end,     { desc = '[L]ist [W]atches',    noremap = true })
+
+vim.keymap.set('n', '<leader>bt',    function() dap.toggle_breakpoint() end,      { desc = '[B]r.point [T]oggle', noremap = true })
+vim.keymap.set('n', '<leader>bc',    function() dap.clear_breakpoints() end,      { desc = '[B]r.point [C]lear',  noremap = true })
+vim.keymap.set('n', '<leader>bs',    function() dap.set_breakpoint() end,         { desc = '[B]r.point [S]et',    noremap = true })
+vim.keymap.set('n', '<leader>bl',    function() set_breakpoint_log() end,         { desc = '[B]r.point [L]og',    noremap = true })
+
+vim.keymap.set('n', '<leader>wa',    function() watch_add() end,                  { desc = '[W]atch [A]dd',       noremap = true })
 -- ---------------------------------------------------------------------------
