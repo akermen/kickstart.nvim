@@ -93,6 +93,9 @@ vim.keymap.set('n', '<leader>sr',    require('telescope.builtin').resume,       
 vim.keymap.set('n', '<leader>hh',    ":set hlsearch!<CR>",                        { desc = '[H]ighlight [H]it',   noremap = true })
 vim.keymap.set('n', '<leader>o',     require('telescope.builtin').find_files,     { desc = '[O]pen Files',        noremap = true })
 vim.keymap.set('n', '<leader>f',     require('telescope.builtin').live_grep,      { desc = '[F]ind in files',     noremap = true })
+vim.keymap.set('n', '<leader>ws',    ':BrowserSearch<CR>',                        { desc = '[W]eb [S]earch',      noremap = true })
+vim.keymap.set('v', '<leader>ws',    ':BrowserSearch<CR>',                        { desc = '[W]eb [S]earch',      noremap = true })
+vim.keymap.set('n', '<leader>wt',    ':BrowserSearch ',                           { desc = '[W]eb Search [T]ext', noremap = true })
 
 -- Git
 vim.keymap.set('n', '<leader>gg',    ":G<CR>",                                    { desc = '[G]it',               noremap = true })
@@ -183,8 +186,6 @@ vim.keymap.set("n", "<leader>tw",    ":set wrap!<cr>",                          
 
 -- undo
 vim.keymap.set("n", "<leader>ut",    ":UndotreeToggle<CR>",                       { desc = '[U]ndotree [T]oggle', noremap = true })
-vim.keymap.set("n", "<leader>us",    ":UndotreeShow<CR>",                         { desc = '[U]ndotree [S]how',   noremap = true })
-vim.keymap.set("n", "<leader>uh",    ":UndotreeHide<CR>",                         { desc = '[U]ndotree [H]ide',   noremap = true })
 vim.keymap.set("n", "<leader>uf",    ":UndotreeFocus<CR>",                        { desc = '[U]ndotree [F]ocus',  noremap = true })
 
 -- gui app specific maps
@@ -217,15 +218,11 @@ vim.keymap.set('v', '<leader>av',    ':Gen Change_Code<CR>',                    
 vim.keymap.set('v', '<leader>af',    ':Gen Fix_Code<CR>',                         { desc = '[A]I [F]ix Code',     noremap = true })
 
 -- open url
-if vim.fn.has("mac") == 1 then
-    vim.keymap.set('n', '<leader>gx', '<Cmd>call jobstart(["open", expand("<cfile>")], {"detach": v:true})<CR>')
-elseif vim.fn.has("unix") == 1 then
-    vim.keymap.set('n', '<leader>gx', '<Cmd>call jobstart(["xdg-open", expand("<cfile>")], {"detach": v:true})<CR>')
-else
-    vim.keymap.set('n', '<leader>gx', '<Cmd>lua print("Error: gx is not supported on this OS!")<CR>')
-end
+vim.keymap.set("n", "gx",            '<esc>:URLOpenUnderCursor<cr>',              { desc = '[G]oto [X]rl',        noremap = true })
+vim.keymap.set('n', '<leader>gt',    '<esc>:URLOpenUnderCursor<cr>',              { desc = '[G]o [T]o',           noremap = true })
+vim.keymap.set('n', '<leader>us',    '<esc>:URLOpenHighlightAll<cr>',             { desc = '[U]rl [S]how All',    noremap = true })
+vim.keymap.set('n', '<leader>uc',    '<esc>:URLOpenHighlightAllClear<cr>',        { desc = '[U]rl [C]lear All',   noremap = true })
 
-vim.keymap.set("n", "<leader>uf",    ":UndotreeFocus<CR>",                        { desc = '[U]ndotree [F]ocus',  noremap = true })
 -- vim.keymap.set("n", "<leader>do",    "<CMD>Oil<CR>",                           { desc = "[D]irectory [O]pen",  noremap = true })
 
 -- cmp: fix for <CR> to confirm instead of <C-y> and <TAB> to next item
