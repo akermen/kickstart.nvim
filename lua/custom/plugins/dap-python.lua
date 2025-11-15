@@ -8,7 +8,6 @@ return {
     -- NOTE:install `debugpy` for each project
     -- python3 -m venv venv && ./venv/bin/pip install debugpy
 
-    -- TODO: find more generic method
     local cwd = vim.fn.getcwd()
     local python_path = ''
     if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
@@ -20,7 +19,7 @@ return {
     elseif vim.fn.executable(cwd .. '/.venv3/bin/python') == 1 then
       python_path = cwd .. '/.venv3/bin/python'
     elseif vim.fn.executable(cwd .. '/virtualenv/bin/python') == 1 then
-      python_path = cwd .. '/.virtualenv/bin/python'
+      python_path = cwd .. '/virtualenv/bin/python'
     elseif vim.fn.executable(cwd .. '/virtualenv3/bin/python') == 1 then
       python_path = cwd .. '/virtualenv3/bin/python'
     elseif vim.fn.executable(cwd .. '/.virtualenv/bin/python') == 1 then
@@ -28,7 +27,7 @@ return {
     elseif vim.fn.executable(cwd .. '/.virtualenv3/bin/python') == 1 then
       python_path = cwd .. '/.virtualenv3/bin/python'
     elseif vim.fn.executable(cwd .. '/env/bin/python') == 1 then
-      python_path = cwd .. '/.env/bin/python'
+      python_path = cwd .. '/env/bin/python'
     elseif vim.fn.executable(cwd .. '/env3/bin/python') == 1 then
       python_path = cwd .. '/env3/bin/python'
     elseif vim.fn.executable(cwd .. '/.env/bin/python') == 1 then

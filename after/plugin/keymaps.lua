@@ -23,11 +23,10 @@ vim.keymap.set("n", "<leader>tc",    ":tabnew<CR>",                             
 vim.keymap.set("n", "<leader>tq",    ":tabclose<CR>",                             { desc = "[T]ab [Q]uit",        noremap = true })
 vim.keymap.set("n", "<leader>tn",    ":tabnext<CR>",                              { desc = "[T]ab [N]ext",        noremap = true })
 vim.keymap.set("n", "<leader>tp",    ":tabprevious<CR>",                          { desc = "[T]ab [P]revious",    noremap = true })
-vim.keymap.set("n", "<leader>ts",    ":tabfirst<CR>",                             { desc = "[T]ab [S]tart",       noremap = true })
+vim.keymap.set("n", "<leader>tf",    ":tabfirst<CR>",                             { desc = "[T]ab [F]irst",       noremap = true })
 vim.keymap.set("n", "<leader>te",    ":tablast<CR>",                              { desc = "[T]ab [E]end",        noremap = true })
 vim.keymap.set("n", "<leader>tl",    ":tabm -1<CR>",                              { desc = "[T]ab [L]eft",        noremap = true })
 vim.keymap.set("n", "<leader>tr",    ":tabm +1<CR>",                              { desc = "[T]ab [R]ight",       noremap = true })
-vim.keymap.set("n", "<leader>tF",    ":tabm 0<CR>",                               { desc = "[T]ab [F]irst",       noremap = true })
 vim.keymap.set("n", "<leader>tL",    ":tabm<CR>",                                 { desc = "[T]ab [L]ast",        noremap = true })
 vim.keymap.set("n", "<leader>to",    ":tabonly<CR>",                              { desc = "[T]ab [O]nly",        noremap = true })
 vim.keymap.set("n", "<leader>ts",    ":tab split<CR>",                            { desc = "[T]ab [S]plit",       noremap = true })
@@ -109,10 +108,10 @@ vim.keymap.set('n', '<leader>gw',    ":GBrowse<CR>",                            
 vim.keymap.set('n', '<leader>glb',   ":GitBlameToggle<CR>",                       { desc = '[G]it [L]ine [B]lame',noremap = true })
 vim.keymap.set('n', '<leader>glw',   ":GitBlameOpenCommitURL<CR>",                { desc = '[G]it [L]ine [W]eb',  noremap = true })
 vim.keymap.set('n', '<leader>gls',   ":GitBlameCopySHA<CR>",                      { desc = '[G]it [L]ine [S]HA',  noremap = true })
-vim.keymap.set('n', '<leader>gn',    ":Gitsign next_hunk<CR>",                    { desc = '[G]it [N]ext Hunk',   noremap = true })
-vim.keymap.set('n', '<leader>gp',    ":Gitsign prev_hunk<CR>",                    { desc = '[G]it [P]rev Hunk',   noremap = true })
-vim.keymap.set('n', '<leader>gv',    ":Gitsign preview_hunk<CR>",                 { desc = '[G]it [V]iew Hunk',   noremap = true })
-vim.keymap.set('n', '<leader>glB',   ":Gitsign blame_line<CR>",                   { desc = '[G]it [L]ine [B]lame',noremap = true })
+vim.keymap.set('n', '<leader>gn',    ":Gitsigns next_hunk<CR>",                   { desc = '[G]it [N]ext Hunk',   noremap = true })
+vim.keymap.set('n', '<leader>gp',    ":Gitsigns prev_hunk<CR>",                   { desc = '[G]it [P]rev Hunk',   noremap = true })
+vim.keymap.set('n', '<leader>gv',    ":Gitsigns preview_hunk<CR>",                { desc = '[G]it [V]iew Hunk',   noremap = true })
+vim.keymap.set('n', '<leader>glB',   ":Gitsigns blame_line<CR>",                  { desc = '[G]it [L]ine [B]lame',noremap = true })
 -- map('n', '<leader>hs', gitsigns.stage_hunk)
 -- map('n', '<leader>hr', gitsigns.reset_hunk)
 -- map('v', '<leader>hs', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
@@ -226,27 +225,28 @@ vim.keymap.set('n', '<leader>uc',    '<esc>:URLOpenHighlightAllClear<cr>',      
 -- vim.keymap.set("n", "<leader>do",    "<CMD>Oil<CR>",                           { desc = "[D]irectory [O]pen",  noremap = true })
 
 -- cmp: fix for <CR> to confirm instead of <C-y> and <TAB> to next item
-local cmp = require("cmp")
-cmp.setup({
-  mapping = {
-    ["<CR>"] = cmp.mapping(
-      function(fallback)
-        if cmp.visible() then
-          cmp.confirm({ select = true })
-        else
-          fallback()
-        end
-      end, { "i" }),
-    ["<TAB>"] = cmp.mapping(
-      function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
-        end
-      end, { "i" })
-  }
-})
+-- NOTE: Commented out - project uses blink.cmp, not nvim-cmp
+-- local cmp = require("cmp")
+-- cmp.setup({
+--   mapping = {
+--     ["<CR>"] = cmp.mapping(
+--       function(fallback)
+--         if cmp.visible() then
+--           cmp.confirm({ select = true })
+--         else
+--           fallback()
+--         end
+--       end, { "i" }),
+--     ["<TAB>"] = cmp.mapping(
+--       function(fallback)
+--         if cmp.visible() then
+--           cmp.select_next_item()
+--         else
+--           fallback()
+--         end
+--       end, { "i" })
+--   }
+-- })
 
 -- harpoon
 local harpoon = require("harpoon")
@@ -273,7 +273,7 @@ end
 local functionHarpoonToggle1 = function() harpoon.ui:toggle_quick_menu(harpoon:list()) end
 local functionHarpoonToggle2 = function() toggle_telescope(harpoon:list()) end
 vim.keymap.set("n", "<leader>ho",    functionHarpoonToggle1,                      { desc = '[H]arpoon [O]pen',    noremap = true })
-vim.keymap.set("n", "<leader>ht",    functionHarpoonToggle2,                      { desc = '[H]arpoon [T[oggle',  noremap = true })
+vim.keymap.set("n", "<leader>ht",    functionHarpoonToggle2,                      { desc = '[H]arpoon [T]oggle',  noremap = true })
 vim.keymap.set("n", "<leader>ha",    function() harpoon:list():add() end,         { desc = '[H]arpoon [A]dd',     noremap = true })
 vim.keymap.set("n", "<leader>h1",    function() harpoon:list():select(1) end,     { desc = '[H]arpoon [1]',       noremap = true })
 vim.keymap.set("n", "<leader>h2",    function() harpoon:list():select(2) end,     { desc = '[H]arpoon [2]',       noremap = true })
@@ -325,8 +325,8 @@ vim.keymap.set('n', '<leader>du',    function() dap.step_out() end,             
 
 vim.keymap.set('n', '<leader>de',    function() widgets.hover() end,              { desc = '[D]ebug [E]valuate',  noremap = true })
 vim.keymap.set('v', '<leader>de',    function() widgets.hover() end,              { desc = '[D]ebug [E]valuate',  noremap = true })
-vim.keymap.set('n', '<leader>dv',    function() widgets.preview() end,            { desc = '[D]ebug E[v]aluate', noremap = true })
-vim.keymap.set('v', '<leader>dv',    function() widgets.preview() end,            { desc = '[D]ebug E[v]aluate', noremap = true })
+vim.keymap.set('n', '<leader>dv',    function() widgets.preview() end,            { desc = '[D]ebug E[v]aluate',  noremap = true })
+vim.keymap.set('v', '<leader>dv',    function() widgets.preview() end,            { desc = '[D]ebug E[v]aluate',  noremap = true })
 
 vim.keymap.set('n', '<leader>lb',    function() float_element('breakpoints') end, { desc = '[L]ist [B]r.points',  noremap = true })
 vim.keymap.set('n', '<leader>ls',    function() float_element('scopes') end,      { desc = '[L]ist [S]copes',     noremap = true })
@@ -334,7 +334,7 @@ vim.keymap.set('n', '<leader>lt',    function() float_element('stacks') end,    
 vim.keymap.set('n', '<leader>lw',    function() float_element('watches') end,     { desc = '[L]ist [W]atches',    noremap = true })
 
 vim.keymap.set('n', '<leader>bt',    function() dap.toggle_breakpoint() end,      { desc = '[B]r.point [T]oggle', noremap = true })
-vim.keymap.set('n', '<leader>bc',    function() dap.clear_breakpoints() end,      { desc = '[B]r.point [C]lear',  noremap = true })
+vim.keymap.set('n', '<leader>br',    function() dap.clear_breakpoints() end,      { desc = '[B]r.point [R]emove', noremap = true })
 vim.keymap.set('n', '<leader>bs',    function() dap.set_breakpoint() end,         { desc = '[B]r.point [S]et',    noremap = true })
 vim.keymap.set('n', '<leader>bl',    function() set_breakpoint_log() end,         { desc = '[B]r.point [L]og',    noremap = true })
 
