@@ -340,3 +340,7 @@ vim.keymap.set('n', '<leader>bl',    function() set_breakpoint_log() end,       
 
 vim.keymap.set('n', '<leader>wa',    function() watch_add() end,                  { desc = '[W]atch [A]dd',       noremap = true })
 -- ---------------------------------------------------------------------------
+-- cms.utils.keymap blocks insert mode tab
+vim.keymap.del("i", "<Tab>")
+vim.keymap.del("i", "<CR>")
+-- ---------------------------------------------------------------------------
