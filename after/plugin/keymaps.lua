@@ -10,7 +10,8 @@ vim.keymap.set('n', '<leader>dl',    vim.diagnostic.setloclist,                 
 
 -- buffers
 vim.keymap.set("n", "<leader>bw",    "<cmd>w<CR>",                                { desc = "[B]uffer [W]rite",    noremap = true })
-vim.keymap.set("n", "<leader>bc",    ":bd<CR>",                                   { desc = "[B]uffer [C]leanup",  noremap = true })
+vim.keymap.set("n", "<leader>bq",    ":bd<CR>",                                   { desc = "[B]uffer [Q]uit",     noremap = true })
+vim.keymap.set("n", "<leader>bc",    ":%bd!<CR>",                                 { desc = "[B]uffer [C]leanup",  noremap = true })
 vim.keymap.set("n", "<leader>bd",    ":bd!<CR>",                                  { desc = "[B]uffer [D]estroy",  noremap = true })
 
 -- switching
