@@ -217,12 +217,6 @@ vim.keymap.set('v', '<leader>am',    ':Gen Change<CR>',                         
 vim.keymap.set('v', '<leader>av',    ':Gen Change_Code<CR>',                      { desc = '[A]I [V]ariety Code', noremap = true })
 vim.keymap.set('v', '<leader>af',    ':Gen Fix_Code<CR>',                         { desc = '[A]I [F]ix Code',     noremap = true })
 
--- open url
-vim.keymap.set("n", "gx",            '<esc>:URLOpenUnderCursor<cr>',              { desc = '[G]oto [X]rl',        noremap = true })
-vim.keymap.set('n', '<leader>gt',    '<esc>:URLOpenUnderCursor<cr>',              { desc = '[G]o [T]o',           noremap = true })
-vim.keymap.set('n', '<leader>us',    '<esc>:URLOpenHighlightAll<cr>',             { desc = '[U]rl [S]how All',    noremap = true })
-vim.keymap.set('n', '<leader>uc',    '<esc>:URLOpenHighlightAllClear<cr>',        { desc = '[U]rl [C]lear All',   noremap = true })
-
 -- vim.keymap.set("n", "<leader>do",    "<CMD>Oil<CR>",                           { desc = "[D]irectory [O]pen",  noremap = true })
 
 -- cmp: fix for <CR> to confirm instead of <C-y> and <TAB> to next item
@@ -342,6 +336,30 @@ vim.keymap.set('n', '<leader>bl',    function() set_breakpoint_log() end,       
 vim.keymap.set('n', '<leader>wa',    function() watch_add() end,                  { desc = '[W]atch [A]dd',       noremap = true })
 -- ---------------------------------------------------------------------------
 -- cms.utils.keymap blocks insert mode tab
-vim.keymap.del("i", "<Tab>")
-vim.keymap.del("i", "<CR>")
+-- vim.keymap.del("i", "<Tab>")
+-- vim.keymap.del("i", "<CR>")
+
+-- substitute
+local sub = require("substitute")
+local exc = require("substitute.exchange")
+vim.keymap.set("n", "s",             sub.operator,                                { desc = "Replace", noremap = true })
+vim.keymap.set("n", "ss",            sub.line,                                    { desc = "Replace line", noremap = true })
+vim.keymap.set("n", "S",             sub.eol,                                     { desc = "Replace to EOL", noremap = true })
+vim.keymap.set("x", "s",             sub.visual,                                  { desc = "Replace visual", noremap = true })
+-- exchange
+vim.keymap.set("n", "sx",            exc.operator,                                { desc = "Exchange", noremap = true })
+vim.keymap.set("n", "sxx",           exc.line,                                    { desc = "Exchange line", noremap = true })
+vim.keymap.set("x", "X",             exc.visual,                                  { desc = "Exchange visual", noremap = true })
+vim.keymap.set("n", "sxc",           exc.cancel,                                  { desc = "Cancel exchange", noremap = true })
+-- range
+-- vim.keymap.set("n", "<leader>r",     sub.operator,                                { noremap = true })
+-- vim.keymap.set("x", "<leader>r",     sub.visual,                                  { noremap = true })
+-- vim.keymap.set("n", "<leader>rr",    sub.word,                                    { noremap = true })
+
 -- ---------------------------------------------------------------------------
+-- open url
+vim.keymap.set("n", "gx",            '<esc>:URLOpenUnderCursor<cr>',              { desc = '[G]oto [X]rl',        noremap = true })
+vim.keymap.set('n', '<leader>gt',    '<esc>:URLOpenUnderCursor<cr>',              { desc = '[G]o [T]o',           noremap = true })
+vim.keymap.set('n', '<leader>us',    '<esc>:URLOpenHighlightAll<cr>',             { desc = '[U]rl [S]how All',    noremap = true })
+vim.keymap.set('n', '<leader>uc',    '<esc>:URLOpenHighlightAllClear<cr>',        { desc = '[U]rl [C]lear All',   noremap = true })
+
